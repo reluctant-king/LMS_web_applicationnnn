@@ -41,7 +41,7 @@ const Header = () => {
 
    const fetchNotifications = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_notification/${user?._id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_notification/${user?._id}`);
         console.log(res.data.count)
 
         if (res.data.success) {
