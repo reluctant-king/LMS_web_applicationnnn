@@ -26,7 +26,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/login`, {
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/login`, {
                 email: inputs.emailOrPhone,
                 password: inputs.password
             }, {

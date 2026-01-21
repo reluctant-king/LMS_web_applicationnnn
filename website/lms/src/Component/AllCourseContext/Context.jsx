@@ -22,7 +22,7 @@ export const Context = (props) => {
         //     console.log("aaa")
         // };
         const getMe = async () => {
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/me`, {
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/me`, {
                 withCredentials: true
             })
             console.log("res", res);
