@@ -60,7 +60,7 @@ const MyCourses = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/my-courses`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/my-courses`, {
         params: {
           page,
           limit,
@@ -117,7 +117,7 @@ const MyCourses = () => {
 
     try {
       const res = await axios.delete(
-        `https://lms-web-application-backend-e6yj.onrender.com/api/v1/get_course/${courseId}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/get_course/${courseId}`,
         { withCredentials: true }
       );
 

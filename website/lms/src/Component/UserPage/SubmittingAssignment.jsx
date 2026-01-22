@@ -66,7 +66,7 @@ const SubmittingAssignment = ({ setclickSubmittingAssignment, assignment, userCo
     // }
 
     try {
-      let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/submit_assignment`, sendData)
+      let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/submit_assignment`, sendData)
       console.log(res)
 
       if (res.data.success) {

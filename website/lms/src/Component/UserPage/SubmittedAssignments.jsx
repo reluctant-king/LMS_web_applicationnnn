@@ -14,7 +14,7 @@ const SubmittedAssignments = ({ setClickSubmittedAssignment }) => {
     const getAllSubmittedAssignment = async () => {
         try {
             setLoading(true)
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_user_submitted_assignment`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_user_submitted_assignment`)
             console.log(res)
             let correntUserAssignment = res.data.userAssignment.filter((a) => a.userId === user?._id)
             console.log(correntUserAssignment)

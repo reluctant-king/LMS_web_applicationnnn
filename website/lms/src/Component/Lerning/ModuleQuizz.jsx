@@ -90,7 +90,7 @@ const ModuleQuizz = ({ currentQuizz, onBack, moduleName, moduleId, currentQuizId
           score: totalScore || "00"
         }
 
-        let submitRes = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/submiting_quiz`, payload)
+        let submitRes = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/submiting_quiz`, payload)
 
         console.log(submitRes)
         if (submitRes.data.success) {

@@ -24,7 +24,7 @@ const CourseCategories = () => {
     const getAllCategories = async () => {
       try {
         
-        const response = await fetch("https://lms-web-application-backend-e6yj.onrender.com/api/v1/view_All_course_categories?page=1&limit=1000");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/view_All_course_categories?page=1&limit=1000`);
         const data = await response.json();
         
         if (data.data) {

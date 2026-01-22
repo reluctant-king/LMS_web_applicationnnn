@@ -35,11 +35,11 @@ const [editStudent, setEditStudent] = useState(null);
     const studentEnrolledCourse = async () => {
         try {
             setLoading(true)
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_payment_details`)
-            let allCourse = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_courses`)
-            let allCourseComplete = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_completers`)
-            let allAssignment = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_assignments`)
-            let allStudent = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_students`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_payment_details`)
+            let allCourse = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_courses`)
+            let allCourseComplete = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_completers`)
+            let allAssignment = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_assignments`)
+            let allStudent = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_students`)
             console.log(allStudent)
             console.log(res)
             console.log(allCourse)

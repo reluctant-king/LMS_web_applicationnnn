@@ -47,7 +47,7 @@ const UploadAssignment = ({ setClickCreateAssignment, clickCreateAssignMent, cou
     const getAllPayment = async () => {
         try {
             setLoading(true)
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_payment_details`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_payment_details`)
             console.log(res)
             setPayments(res.data.paymentDetails)
 
@@ -121,7 +121,7 @@ const UploadAssignment = ({ setClickCreateAssignment, clickCreateAssignMent, cou
 
             }
 
-            let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/create_assignment`, payload)
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/create_assignment`, payload)
             if (res.data.success) {
                 Swal.fire({
                     icon: "success",

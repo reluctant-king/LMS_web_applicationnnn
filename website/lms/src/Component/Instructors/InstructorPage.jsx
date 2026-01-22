@@ -51,7 +51,7 @@ const InstructorPage = () => {
 
   // const fetchInstructorData = async () => {
   //   try {
-  //     const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/me`, {
+  //     const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/me`, {
   //       withCredentials: true
   //     });
 
@@ -70,9 +70,9 @@ const InstructorPage = () => {
   const fetchInstructorDetails = async () => {
     try {
       setLoading(true)
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_courses`);
-      const instrectors = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_approved_instrectors`)
-      let paymentRes = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_payment_details`)
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_courses`);
+      const instrectors = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_approved_instrectors`)
+      let paymentRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_payment_details`)
    
       setCourse(res.data.courses)
       setInstructors(instrectors.data.instrecters)

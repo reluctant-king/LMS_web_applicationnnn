@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { ArrowLeft, Send, Paperclip, MoreVertical, CheckCheck, MessageCircle } from "lucide-react";
 
-const API_BASE = "https://lms-web-application-backend-e6yj.onrender.com/api/v1";
+const API_BASE = `${import.meta.env.VITE_API_URL}/api/v1`;
 
 const TicketChatPage = () => {
   const { ticketId } = useParams();

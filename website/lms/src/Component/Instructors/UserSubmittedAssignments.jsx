@@ -21,8 +21,8 @@ const UserSubmittedAssignments = ({ setClickUserAssignment }) => {
     const getAllSubmittedAssignment = async () => {
         try {
             setLoadintg(true)
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_user_submitted_assignment`)
-            let allAssignmentRes = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_assignments`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_user_submitted_assignment`)
+            let allAssignmentRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_assignments`)
             console.log(res)
             console.log(allAssignmentRes)
             setAllAssignment(allAssignmentRes.data.assignment)
@@ -82,7 +82,7 @@ const UserSubmittedAssignments = ({ setClickUserAssignment }) => {
     const handleDownload = async (file) => {
         const fileName = file.split("\\").pop();
         console.log(fileName)
-        window.open(`${import.meta.env.VITE_API_URL}api/v1/download_assignment/${fileName}`, "_blank")
+        window.open(`${import.meta.env.VITE_API_URL}/api/v1/download_assignment/${fileName}`, "_blank")
 
     }
 

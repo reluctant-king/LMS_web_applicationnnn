@@ -38,7 +38,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/sign_up`, payload)
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/sign_up`, payload)
             console.log(res);
             if (res.data.success) {
                 setMessage(res.data.message)

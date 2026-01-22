@@ -38,7 +38,7 @@ const CreateInstructorCourse = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_All_categories`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_All_categories`);
       if (res.data.allCoursecategory) {
         setCategories(res.data.allCoursecategory);
       }
@@ -187,7 +187,7 @@ const CreateInstructorCourse = () => {
       };
 
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}api/v1/create-course`,
+        `${import.meta.env.VITE_API_URL}/api/v1/create-course`,
         payload,
         { withCredentials: true }
       );

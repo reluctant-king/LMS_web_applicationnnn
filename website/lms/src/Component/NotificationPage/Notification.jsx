@@ -120,7 +120,7 @@ const Notification = () => {
   const confirmDelete = async (id) => {
     setNottId(id)
     try {
-      let res = await axios.delete(`${import.meta.env.VITE_API_URL}api/v1/delete_notification/${id}`)
+      let res = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/delete_notification/${id}`)
       if (res.data.success) {
         onTimeDelete()
         toast.success("Notification deleted")

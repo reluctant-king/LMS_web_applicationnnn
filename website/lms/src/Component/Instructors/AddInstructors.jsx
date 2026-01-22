@@ -66,7 +66,7 @@ const AddInstructors = ({ setShowForm, emailll }) => {
                 website: inputs.website,
             }
 
-            let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/add_instructor_details`, payload)
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/add_instructor_details`, payload)
             console.log(res)
             if (res.data.success) {
                 toast.success(res.data.message)

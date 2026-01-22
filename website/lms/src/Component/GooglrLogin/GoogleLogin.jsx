@@ -8,7 +8,7 @@ const GoogleLogin = () => {
   const navigate = useNavigate()
 
   const handleGoogleLogin = () => {
-   window.open("https://lms-web-application-backend-e6yj.onrender.com/auth/google", "_self")
+   window.open(`${import.meta.env.VITE_API_URL}/auth/google`, "_self")
    
   }
 

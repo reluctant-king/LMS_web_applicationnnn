@@ -21,7 +21,7 @@ const QuizList = () => {
   const getAllQuizess = async () => {
     setLoading(true)
     try {
-      let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_quizz`)
+      let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_quizz`)
       console.log(res);
       setQuizz(res.data.quizz)
     } catch (error) {
@@ -100,7 +100,7 @@ const QuizList = () => {
 
         };
         console.log(payload);
-        let subRes = await axios.post("https://lms-web-application-backend-e6yj.onrender.com/api/v1/send_quiz_result", payload);
+        let subRes = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/send_quiz_result`, payload);
         console.log(subRes);
       } catch (error) {
         console.error("Error sending quiz result:", error);

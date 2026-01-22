@@ -49,7 +49,7 @@ const CoursesPage = () => {
       params.append('sortOrder', sortOrder);
 
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}api/v1/get_all_courses?${params.toString()}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/get_all_courses?${params.toString()}`,
         { withCredentials: true }
       );
 
