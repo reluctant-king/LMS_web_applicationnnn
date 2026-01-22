@@ -38,23 +38,32 @@ const Header = () => {
 
   const unreadCount = 10
 
+  const fetchNotifications = async () => {
+    // FIX 1: Guard clause - Stop if user ID is missing
+    if (!user || !user._id) return;
 
-   const fetchNotifications = async () => {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_notification/${user?._id}`);
-        console.log(res.data.count)
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/get_notification/${user._id}`,
+        { withCredentials: true } // FIX 2: Send cookies/credentials to avoid 401 errors
+      );
+      
+      console.log(res.data.count);
 
-        if (res.data.success) {
-          setNotifications(res.data.count);
-        }
-      } catch (err) {
-        console.error(err);
+      if (res.data.success) {
+        setNotifications(res.data.count);
       }
-    };
+    } catch (err) {
+      console.error("Notification Error:", err);
+    }
+  };
+
   useEffect(() => {
-   
-    fetchNotifications();
-  }, [user?._id]);
+    // FIX 3: Only run fetch if user._id actually exists
+    if (user?._id) {
+      fetchNotifications();
+    }
+  }, [user]);
 
   const getUserDisplayName = () => {
     if (!user) return 'User';
