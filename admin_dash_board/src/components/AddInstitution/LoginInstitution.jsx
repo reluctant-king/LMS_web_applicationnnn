@@ -25,7 +25,7 @@ const LoginInstitution = () => {
 
     try {
         const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1login_institute`,
+        `${import.meta.env.VITE_API_URL}/api/v1/login_institute`,
         {
             email: inputs.email,
             adminPassword: inputs.password
