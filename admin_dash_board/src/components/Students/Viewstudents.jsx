@@ -40,7 +40,7 @@ const ViewStudents = () => {
   const getStudents = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_students`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_students`);
       setStudents(res.data.students || []);
       console.log(res)
 

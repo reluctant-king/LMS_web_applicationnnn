@@ -32,7 +32,7 @@ const AnnouncementsPage = () => {
   const fetchAnnouncements = async (page = 1) => {
     setLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/allannouncements`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/allannouncements`, {
         params: { page, limit: itemsPerPage, search },
       });
       setAnnouncements(res.data.data || []);
@@ -72,9 +72,9 @@ const AnnouncementsPage = () => {
       }
 
       if (editData) {
-        await axios.put(`${import.meta.env.VITE_API_URL}api/v1/announcements/${editData._id}`, formData);
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/announcements/${editData._id}`, formData);
       } else {
-        await axios.post(`${import.meta.env.VITE_API_URL}api/v1/announcementscreate`, formData);
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/announcementscreate`, formData);
       }
 
       handleCloseModal();
@@ -87,7 +87,7 @@ const AnnouncementsPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this announcement?")) return;
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}api/v1/announcements/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/announcements/${id}`);
       fetchAnnouncements(currentPage);
     } catch (error) {
       console.error("Error deleting announcement:", error);

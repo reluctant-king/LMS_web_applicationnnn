@@ -36,7 +36,7 @@ const ScheduleBatch = () => {
   useEffect(() => {
     const getAllCourses = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_courses`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_courses`);
         console.log(resizeBy)
         setCourses(res.data.data);
       } catch (error) {
@@ -46,7 +46,7 @@ const ScheduleBatch = () => {
 
     const getAllInstructors = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`);
         setInstructors(res.data.data);
       } catch (error) {
         console.error("Error fetching instructors:", error);
@@ -97,7 +97,7 @@ const ScheduleBatch = () => {
       }
 
       const payload = { ...form, banner: uploadedBanner, daysOfWeek: form.daysOfWeek };
-      await axios.post(`${import.meta.env.VITE_API_URL}api/v1/create_batch`, payload);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/create_batch`, payload);
 
       alert("Batch created successfully!");
     } catch (err) {

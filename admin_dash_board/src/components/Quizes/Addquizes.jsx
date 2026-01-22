@@ -39,7 +39,7 @@ const AddQuizzes = () => {
         options: quiz.options,
         rightAnswer: quiz.rightAnswer
       }
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/create_quiz`, payload)
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/create_quiz`, payload)
       console.log(res)
       if (res.data.success) {
         Swal.fire({

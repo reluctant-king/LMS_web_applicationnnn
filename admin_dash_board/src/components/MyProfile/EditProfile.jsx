@@ -46,7 +46,7 @@ const EditProfile = ({ setShowEdit, id }) => {
 
     const getInstitute = async () => {
         try {
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_institute/${id}`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_institute/${id}`)
             console.log(res)
             setInput(res.data.institute)
 

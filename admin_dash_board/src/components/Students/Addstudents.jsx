@@ -22,7 +22,7 @@ const AddStudents = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}api/v1/view_all_batches`)
+      .get(`${import.meta.env.VITE_API_URL}/api/v1/view_all_batches`)
       .then((res) => setBatches(res.data.data || []))
       .catch((err) => console.error(err));
   }, []);
@@ -48,7 +48,7 @@ const AddStudents = () => {
         img_url = res.data.secure_url;
       }
 
-      await axios.post(`${import.meta.env.VITE_API_URL}api/v1/add_student`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/add_student`, {
         ...inputs,
         profileImage: img_url,
       });

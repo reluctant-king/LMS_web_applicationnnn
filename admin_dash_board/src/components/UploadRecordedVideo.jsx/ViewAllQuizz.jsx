@@ -25,7 +25,7 @@ const ViewAllQuizz = () => {
 
     const getAllQuizzes = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_module_quizz`);
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_module_quizz`);
             if (res.data.success) {
                 setQuizzes(res.data.quizes || []);
             }

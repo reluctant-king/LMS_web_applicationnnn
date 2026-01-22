@@ -64,7 +64,7 @@ const UploadVideos = () => {
 
             }
 
-            let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/upload_recorded_video`, payloads)
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/upload_recorded_video`, payloads)
 
             console.log(res);
 

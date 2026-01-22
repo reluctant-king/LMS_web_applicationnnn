@@ -7,7 +7,7 @@ const InstructorForm = ({ data, updateData }) => {
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`);
         setInstructors(res.data.data); 
       } catch (error) {
         console.error("Error fetching instructors:", error);

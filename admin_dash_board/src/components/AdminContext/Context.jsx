@@ -18,7 +18,7 @@ const Context = ({ children }) => {
   const getAdmin = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}api/v1/getInstitutionAdmin`,
+        `${import.meta.env.VITE_API_URL}/api/v1/getInstitutionAdmin`,
         { withCredentials: true }
       );
 

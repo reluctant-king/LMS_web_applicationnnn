@@ -64,12 +64,12 @@ const AddCourse = () => {
   const getAllDetails = async () => {
     try {
       setLoading(true)
-      const insterecters = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_approved_instrectors"`);
+      const insterecters = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_approved_instrectors"`);
 
       console.log(insterecters)
 
       setInstructors(insterecters.data.instrecters);
-      const catRes = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_All_categories`);
+      const catRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_All_categories`);
       console.log(catRes);
 
 
@@ -159,7 +159,7 @@ const AddCourse = () => {
         monthlyAmount: inputs.monthlyAmount
 
       };
-      let res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/create_course`, payload);
+      let res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/create_course`, payload);
 
       console.log(res);
 

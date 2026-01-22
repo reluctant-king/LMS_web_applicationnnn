@@ -61,8 +61,8 @@ const AddInstructors = () => {
 
       }
       const [signupRes, detailsRes] = await Promise.all([
-        axios.post(`${import.meta.env.VITE_API_URL}api/v1/sign_up`, signupPayload),
-        axios.post(`${import.meta.env.VITE_API_URL}api/v1/add_instructor`, payload)
+        axios.post(`${import.meta.env.VITE_API_URL}/api/v1/sign_up`, signupPayload),
+        axios.post(`${import.meta.env.VITE_API_URL}/api/v1/add_instructor`, payload)
       ])
 
       console.log("signupRes", signupRes)

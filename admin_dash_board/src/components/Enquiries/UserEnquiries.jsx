@@ -17,7 +17,7 @@ const UserEnquiries = () => {
 
   const getAllEnquiries = async (page = 1) => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/getAll_enquiry`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/getAll_enquiry`, {
         params: { page, limit: itemsPerPage, name: search },
       });
       setEnquiry(res.data.data || []);

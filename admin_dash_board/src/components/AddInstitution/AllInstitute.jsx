@@ -7,7 +7,7 @@ const AllInstitute = () => {
     const [institutions, setInstitutions] = useState([])
     const [search, setSearch] = useState("")
     const getAllInstitutuion = async () => {
-        let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_institution?institutionName=${search}`)
+        let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_institution?institutionName=${search}`)
         console.log(res);
         getStatusBadge()
         setInstitutions(res.data.institutions)

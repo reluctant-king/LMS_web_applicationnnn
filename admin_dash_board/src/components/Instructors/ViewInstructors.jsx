@@ -103,7 +103,7 @@ const ViewInstructors = () => {
 
   const getAllInstructors = async (page = 1) => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`, {
         params: { page, limit: itemsPerPage, search },
       });
       setInstructors(res.data.data || []);
@@ -131,7 +131,7 @@ const ViewInstructors = () => {
 
   const getAllInstructorsForExport = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`, {
         params: { page: 1, limit: 1000, search },
       });
       return res.data.data || []; 
@@ -236,7 +236,7 @@ const ViewInstructors = () => {
           setDeleteClick={setDeleteClick}
           deleteCont={deleteCont}
           id={deleteId}
-          api_end_point={`${import.meta.env.VITE_API_URL}api/v1/get_instructor`}
+          api_end_point={`${import.meta.env.VITE_API_URL}/api/v1/get_instructor`}
           onTimeDelete={onTimeDelete}
         />
       )}

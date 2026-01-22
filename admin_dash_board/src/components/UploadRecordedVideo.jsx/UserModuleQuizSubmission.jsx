@@ -21,7 +21,7 @@ const UserModuleQuizSubmission = () => {
   const getAllQuizSubmiters = async () => {
     try {
       setLoading(true)
-      let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_userSubmited_answer`)
+      let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_userSubmited_answer`)
       console.log(res)
       setResults(res.data.userSubmitedQquiz)
 

@@ -9,10 +9,10 @@ const BasicInfoForm = ({ data, updateData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const catRes = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_All_course_categories`);
+        const catRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_All_course_categories`);
         setCategories(catRes.data.data);
 
-        const instRes = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`);
+        const instRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`);
         setInstructors(instRes.data.data);
       } catch (err) {
         console.error("Error fetching dropdown data", err);

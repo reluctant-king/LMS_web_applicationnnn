@@ -11,7 +11,7 @@ const SendAnnouncement = () => {
     e.preventDefault();
     setStatus("Sending...");
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/announcementscreate`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/announcementscreate`, {
         title,
         message,
         recipients,

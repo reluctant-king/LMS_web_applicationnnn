@@ -12,7 +12,7 @@ const UserSubmission = () => {
 
   const getAllQuizResults = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_user_quiz_answer`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_user_quiz_answer`);
       console.log(res);
 
       setResults(res.data.submitQuizz || []);

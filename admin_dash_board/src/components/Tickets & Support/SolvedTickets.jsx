@@ -29,7 +29,7 @@ const TicketsSolved = () => {
   const fetchTickets = async (page = 1) => {
     setLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/solved`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/solved`, {
         params: { page, limit: itemsPerPage, search },
       });
       setTickets(res.data.data || []);
@@ -61,7 +61,7 @@ const TicketsSolved = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this ticket record?")) return;
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}api/v1/ticket/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/ticket/${id}`);
       const isLastItemOnPage = tickets.length === 1 && currentPage > 1;
       const nextPage = isLastItemOnPage ? currentPage - 1 : currentPage;
       setCurrentPage(nextPage);

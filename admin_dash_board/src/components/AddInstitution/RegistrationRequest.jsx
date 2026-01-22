@@ -9,7 +9,7 @@ const RegistrationRequest = () => {
     const [isApprovedOrRejected, setAprovedOrRejected] = useState(false)
 
     const getAllRequest = async () => {
-        let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_institution`)
+        let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_institution`)
         console.log(res);
         setInstitute(res.data.institutions)
     }
@@ -20,7 +20,7 @@ const RegistrationRequest = () => {
 
 
     const handleApprove = async (id, s) => {
-        let res = await axios.put(`${import.meta.env.VITE_API_URL}api/v1/update_status/${id}`,
+        let res = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/update_status/${id}`,
             { status: s })
         console.log(res);
         setAprovedOrRejected(s)
@@ -28,7 +28,7 @@ const RegistrationRequest = () => {
     };
 
     const handleReject = async (id, s) => {
-        let res = await axios.put(`${import.meta.env.VITE_API_URL}api/v1/update_status/${id}`,
+        let res = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/update_status/${id}`,
             { status: s })
         console.log(res);
         setAprovedOrRejected(s)

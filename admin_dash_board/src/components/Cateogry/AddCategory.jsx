@@ -33,7 +33,7 @@ const AddCategory = () => {
         img_url = imageRes.data.secure_url;
       }
 
-      await axios.post(`${import.meta.env.VITE_API_URL}api/v1/add_course_cateogry`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/add_course_cateogry`, {
         title: inputs.title,
         description: inputs.desc,
         image: img_url,

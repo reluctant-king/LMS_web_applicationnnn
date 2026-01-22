@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [id, setId] = useState("")
   const { admin } = useContext(AdminContext)
   const getProfile = async () => {
-    let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_profile_details`, {
+    let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_profile_details`, {
       withCredentials: true
     })
     setProfile(res.data.profile)

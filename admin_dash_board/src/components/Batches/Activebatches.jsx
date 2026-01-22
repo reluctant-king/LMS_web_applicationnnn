@@ -24,7 +24,7 @@ const ActiveBatches = () => {
   const getBatches = async (page = 1) => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}api/v1/view_all_batches`,
+        `${import.meta.env.VITE_API_URL}/api/v1/view_all_batches`,
         {
           params: { batchName: search, page, limit: itemsPerPage },
         }
@@ -42,7 +42,7 @@ const ActiveBatches = () => {
   const getAllBatches = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}api/v1/view_all_batches`,
+        `${import.meta.env.VITE_API_URL}/api/v1/view_all_batches`,
         {
           params: { batchName: search, page: 1, limit: 1000 }, // fetch all
         }

@@ -18,7 +18,7 @@ const StudentFees = () => {
     const getAllFeeStructore = async () => {
         try {
             setLoading(true)
-            let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_student_fee?username=${search}`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_student_fee?username=${search}`)
 
             setFeStructore(res.data.feeStructore)
             console.log(res);
@@ -57,7 +57,7 @@ const StudentFees = () => {
                 setDeleteClick={setDeleteClick}
                 id={id}
                 deleteCont={deleteCont}
-                api_end_point={`${import.meta.env.VITE_API_URL}api/v1/get_student_fee_structore`}
+                api_end_point={`${import.meta.env.VITE_API_URL}/api/v1/get_student_fee_structore`}
                 onTimeDelete={onTimeDelete}
             />}
             <div className="max-w-7xl mx-auto">

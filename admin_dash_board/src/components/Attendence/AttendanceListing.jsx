@@ -33,7 +33,7 @@ const AttendanceListing = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/get_all_courses`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/get_all_courses`);
         const data = await res.json();
         if (data.success) setCourses(data.data);
       } catch {
@@ -47,7 +47,7 @@ const AttendanceListing = () => {
   useEffect(() => {
     const fetchBatches = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/get_all_batches`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/get_all_batches`);
         const data = await res.json();
         if (data.success) setBatches(data.data);
       } catch {
@@ -62,7 +62,7 @@ useEffect(() => {
   const fetchAllStudents = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/view_students`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/view_students`);
       const data = await res.json();
       if (data.success) {
         const uniqueStudents = Array.from(new Map(data.data.map((s) => [s._id, s])).values());
@@ -114,7 +114,7 @@ useEffect(() => {
   const fetchBatchStudents = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/students_by_batch/${batch}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/students_by_batch/${batch}`);
       const data = await res.json();
       if (data.success) {
         setStudents(
@@ -146,7 +146,7 @@ useEffect(() => {
     try {
       setLoading(true);
       const params = new URLSearchParams({ batchId: batch, date, session });
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/get_attendance?${params.toString()}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/get_attendance?${params.toString()}`);
       const data = await res.json();
       if (data.success && data.data) {
         const attendance = data.data;
@@ -178,7 +178,7 @@ useEffect(() => {
   
   const createAttendanceSession = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/create_session`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/create_session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ batchId: batch, date, session, subject, room }),
@@ -197,7 +197,7 @@ useEffect(() => {
       let currentAttendanceId = attendanceId || (await createAttendanceSession());
       if (!currentAttendanceId) return;
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/mark_attendance`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/mark_attendance`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ attendanceId: currentAttendanceId, studentId, status }),
@@ -222,7 +222,7 @@ useEffect(() => {
       let currentAttendanceId = attendanceId || (await createAttendanceSession());
       if (!currentAttendanceId) return;
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/mark_bulk`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/mark_bulk`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ attendanceId: currentAttendanceId, status }),

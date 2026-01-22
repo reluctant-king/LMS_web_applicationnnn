@@ -8,7 +8,7 @@ const ViewQuizes = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_all_quizzes`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_all_quizzes`);
         setQuizzes(res.data.data); 
         setLoading(false);
       } catch (error) {

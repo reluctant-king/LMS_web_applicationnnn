@@ -21,7 +21,7 @@ const LowAttendanceAlerts = () => {
   const fetchLowAttendance = async (page, searchTerm) => {
     try {
       const res = await axios.post(
-       `${import.meta.env.VITE_API_URL}api/v1/low-attendance-list`,
+       `${import.meta.env.VITE_API_URL}/api/v1/low-attendance-list`,
         { threshold },
         {
           params: { page, limit: itemsPerPage, search: searchTerm },
@@ -64,7 +64,7 @@ const LowAttendanceAlerts = () => {
 
   const handleSendAlerts = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/low-attendance`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/low-attendance`, {
         message:
           "Your attendance is below 75%. Please attend more classes to avoid issues.",
         threshold,

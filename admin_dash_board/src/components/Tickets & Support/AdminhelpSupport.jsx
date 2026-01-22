@@ -56,7 +56,7 @@ useEffect(() => {
         status: filterStatus,
         priority: filterPriority,
       };
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/admin`, { 
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin`, { 
         params, 
         withCredentials: true 
       });
@@ -74,7 +74,7 @@ useEffect(() => {
 
 const fetchTicketThread = async (ticketId) => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/ticket/${ticketId}`, {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/ticket/${ticketId}`, {
       withCredentials: true
     });
     setTicketThread(res.data.data);
@@ -87,7 +87,7 @@ const fetchTicketThread = async (ticketId) => {
 const handleStatusChange = async (ticketId, newStatus) => {
   try {
     await axios.patch(
-      `${import.meta.env.VITE_API_URL}api/v1/ticket/${ticketId}/status`, 
+      `${import.meta.env.VITE_API_URL}/api/v1/ticket/${ticketId}/status`, 
       { status: newStatus }, 
       { withCredentials: true }
     );
@@ -103,7 +103,7 @@ const handleSendReply = async (ticketId) => {
   if (replyMessage.trim()) {
     try {
       await axios.post(
-        `$${import.meta.env.VITE_API_URL}api/v1/ticket/${ticketId}/message`,
+        `$${import.meta.env.VITE_API_URL}/api/v1/ticket/${ticketId}/message`,
         { message: replyMessage.trim() },  
         { withCredentials: true }         
       );

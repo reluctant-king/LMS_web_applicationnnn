@@ -20,7 +20,7 @@ const VerifyInstructors = () => {
   const fetchPending = async () => {
     try {
       setLoading(true)
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/pending_instructors`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/pending_instructors`);
       console.log('Pending instructors response:', res.data);
       if (res.data && res.data.success) {
         setInstructors(res.data.data || []);
@@ -44,7 +44,7 @@ const VerifyInstructors = () => {
 
   const handleApprove = async (userId) => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/approve_instructor`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/approve_instructor`, {
         userId,
         adminId: 'ADMIN_ID_HERE' 
       });
@@ -87,7 +87,7 @@ const VerifyInstructors = () => {
     }
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}api/v1/reject_instructor`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/reject_instructor`, {
         userId: selectedInstructor._id,
         reason: rejectionReason
       });

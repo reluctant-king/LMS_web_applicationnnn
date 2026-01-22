@@ -38,7 +38,7 @@ const Users = () => {
     const getAllUsers = async () => {
         try {
             const res = await axios.get(
-                `${import.meta.env.VITE_API_URL}api/v1/get_all_user?firstname=${search}`, {
+                `${import.meta.env.VITE_API_URL}/api/v1/get_all_user?firstname=${search}`, {
 
                 withCredentials: true
             }
@@ -83,14 +83,14 @@ const Users = () => {
                     setDeleteClick={setDeleteClick}
                     deleteCont={deleteCont}
                     id={id}
-                    api_end_point={`${import.meta.env.VITE_API_URL}api/v1/get_user`}
+                    api_end_point={`${import.meta.env.VITE_API_URL}/api/v1/get_user`}
                     onTimeDelete={onTimeDelete}
                 />
             )}
             {showEditPopop && <Edit
                 field={usersField}
                 setShowEditPopup={setShowEditPopup}
-                api_end_point={`${import.meta.env.VITE_API_URL}api/v1/get_user`}
+                api_end_point={`${import.meta.env.VITE_API_URL}/api/v1/get_user`}
                 id={id}
                 updateInput={userUpdateInput}
                 reRender={getAllUsers}

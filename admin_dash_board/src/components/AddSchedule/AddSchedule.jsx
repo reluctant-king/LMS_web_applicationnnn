@@ -29,8 +29,8 @@ const ScheduleBatch = () => {
     const fetchData = async () => {
       try {
         const [coursesRes, instructorsRes] = await Promise.all([
-          axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_courses`),
-          axios.get(`${import.meta.env.VITE_API_URL}api/v1/view_instructor`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_courses`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/v1/view_instructor`),
         ]);
 
         console.log(coursesRes, instructorsRes);
@@ -79,7 +79,7 @@ const ScheduleBatch = () => {
         description: form.description,
       };
 
-      await axios.post(`${import.meta.env.VITE_API_URL}api/v1/create_batch`, payload);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/create_batch`, payload);
 
       toast.success("Batch created successfully!", {
         position: "top-right",

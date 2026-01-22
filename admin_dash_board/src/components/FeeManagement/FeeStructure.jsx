@@ -14,7 +14,7 @@ const FeeStructure = () => {
 
 
     const getAllFeeStructor = async () => {
-        let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/get_all_fee_structorre?name=${search}`)
+        let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_fee_structorre?name=${search}`)
         setFeeStructore(res.data.feeStructore)
         console.log(res);
 
@@ -42,7 +42,7 @@ const FeeStructure = () => {
                     setDeleteClick={setDeleteClick}
                     deleteCont={deleteCont}
                     id={id}
-                    api_end_point={`${import.meta.env.VITE_API_URL}api/v1/get_fee_structore`}
+                    api_end_point={`${import.meta.env.VITE_API_URL}/api/v1/get_fee_structore`}
                     onTimeDelete={onTimeDelete}
                 />}
                 {/* Header */}
