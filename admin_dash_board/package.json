@@ -1,6 +1,7 @@
 {
   "name": "mosaic-react",
   "version": "0.1.0",
+  "packageManager": "pnpm@9.15.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
