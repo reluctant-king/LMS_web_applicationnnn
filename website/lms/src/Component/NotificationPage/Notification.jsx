@@ -21,7 +21,7 @@ const Notification = () => {
   const getAllNoticication = async () => {
     try {
       setLoading(true)
-      let res = await axios.get(`${import.meta.env.VITE_API_URL}api/v1/all_notification`)
+      let res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/all_notification`)
       console.log(res)
 
       const assignmentNot = res.data.notification.filter(
