@@ -64,7 +64,7 @@ const AddCourse = () => {
   const getAllDetails = async () => {
     try {
       setLoading(true)
-      const insterecters = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_approved_instrectors"`);
+      const insterecters = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/get_all_approved_instrectors`);
 
       console.log(insterecters)
 
