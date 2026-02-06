@@ -179,6 +179,13 @@ Create a `.env` file inside `server/`:
 
 ---
 
+## 🌐 Live Demo
+- ## LMS Website
+- https://lms-web-applicationnnn.vercel.app
+- ## Admin Dashboard
+- https://lms-web-applicationnnn-gqxc-n1byjqeaz.vercel.app/
+
+
 ## 🔒 Security Features
 
 - JWT authentication  
