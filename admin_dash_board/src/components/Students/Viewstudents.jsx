@@ -97,33 +97,32 @@ const ViewStudents = () => {
   };
 
   // Fetch students (paginated + search)
-  const getStudents = async (page = 1) => {
-    setLoading(true);
-    try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/view_students`,
-        {
-          params: { page, limit: itemsPerPage, search },
-        }
-      );
+const getStudents = async (page = 1) => {
+  setLoading(true);
+  try {
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/view_students`,
+      {
+        params: { page, limit: itemsPerPage, search },
+      }
+    );
 
-      const list = res.data.data || res.data.students || [];
-      setStudents(list);
-      setCurrentPage(res.data.page || 1);
-      setTotalPages(res.data.totalPages || 1);
-      setTotalItems(
-        res.data.totalItems ||
-          list.length ||
-          res.data.data?.length ||
-          res.data.students?.length ||
-          0
-      );
-    } catch (err) {
-      console.error("Error fetching students:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const list = res.data.data || res.data.students || [];
+
+    setStudents(list);
+    setCurrentPage(res.data.page || page);
+    setTotalPages(res.data.totalPages || 1);
+    setTotalItems(
+      typeof res.data.totalItems === "number"
+        ? res.data.totalItems
+        : list.length
+    );
+  } catch (err) {
+    console.error("Error fetching students:", err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Fetch whenever search changes
   useEffect(() => {

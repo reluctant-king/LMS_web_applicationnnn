@@ -52,23 +52,48 @@ exports.addStudent = async (req, res) => {
 
 exports.getAllStudent = async (req, res) => {
   try {
+    let { page = 1, limit = 5, search = "" } = req.query;
 
-    const students = await Student.find()
-    if (!students) {
-      return res.status(401).json({
-        success: false,
-        message: "Faild to fetch syudents"
-      })
+    page = parseInt(page, 10) || 1;
+    limit = parseInt(limit, 10) || 5;
+
+    const query = {};
+
+    if (search) {
+      const regex = new RegExp(search, "i");
+      query.$or = [
+        { name: regex },
+        { email: regex },
+        { phone: regex },
+        { courseEnrolled: regex },
+        { studentId: regex },
+      ];
     }
 
-    res.status(200).json({
+    const totalItems = await Student.countDocuments(query);
+    const totalPages = Math.max(1, Math.ceil(totalItems / limit));
+
+    if (page > totalPages) page = totalPages;
+
+    const students = await Student.find(query)
+      .populate("batch", "batchName") 
+      .sort({ createdAt: -1 })        
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    return res.status(200).json({
       success: true,
-      students
-    })
+      data: students,
+      page,
+      totalPages,
+      totalItems,
+    });
   } catch (error) {
+    console.error("Error fetching students:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
 
 exports.getStudent = async (req, res) => {
   const { id } = req.params
@@ -123,27 +148,26 @@ exports.updateStudent = async (req, res) => {
 }
 
 exports.deleteStudent = async (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
   try {
-    const student = await Student.findByIdAndDelete(id)
+    const student = await Student.findByIdAndDelete(id);
 
     if (!student) {
       return res.status(404).json({
         success: false,
-        message: "student not found"
-      })
+        message: "student not found",
+      });
     }
 
-
-    res.status(201).json({
+    res.status(200).json({
       success: true,
-      message: "student deleted succesfully!"
-    })
+      message: "student deleted succesfully!",
+    });
   } catch (error) {
-    console.error(err);
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
-}
+};
 
 
 exports.assignStudentToBatch = async (req, res) => {
