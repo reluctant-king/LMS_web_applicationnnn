@@ -31,6 +31,7 @@ const TicketsSolved = () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/solved`, {
         params: { page, limit: itemsPerPage, search },
+        withCredentials: true,
       });
       setTickets(res.data.data || []);
       setTotalPages(res.data.totalPages || 1);
