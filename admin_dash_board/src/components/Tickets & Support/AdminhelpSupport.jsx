@@ -59,9 +59,6 @@ useEffect(() => {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin`, { 
         params, 
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
       });
       setTickets(res.data.data || []);
     } catch (err) {
@@ -106,7 +103,7 @@ const handleSendReply = async (ticketId) => {
   if (replyMessage.trim()) {
     try {
       await axios.post(
-        `$${import.meta.env.VITE_API_URL}/api/v1/ticket/${ticketId}/message`,
+        `${import.meta.env.VITE_API_URL}/api/v1/ticket/${ticketId}/message`,
         { message: replyMessage.trim() },  
         { withCredentials: true }         
       );
