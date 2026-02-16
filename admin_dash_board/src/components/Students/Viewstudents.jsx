@@ -14,6 +14,13 @@ const ViewStudents = () => {
   const [deleteClick, setDeleteClick] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const deleteCont = "Are you sure you want to delete this student?";
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const itemsPerPage = 5;
+
+
+
   const studentFields = [
     { label: "Name", name: "name", type: "text", placeholder: "Full Name", required: true },
     { label: "Email", name: "email", type: "email", placeholder: "Email", required: true },
@@ -54,6 +61,7 @@ const ViewStudents = () => {
   };
 
   useEffect(() => {
+    setCurrentPage(1);
     getStudents(1);
   }, [search]);
 
@@ -182,9 +190,42 @@ const ViewStudents = () => {
                 )}
               </tbody>
             </table>
+            {totalPages > 1 && (
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+              <div className="text-sm text-gray-600">
+                Showing page {currentPage} of {totalPages}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => getAllInstructors(currentPage - 1)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-white transition"
+                >
+                  Previous
+                </button>
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => getAllInstructors(i + 1)}
+                    className={`px-4 py-2 border rounded-lg text-sm font-medium ${currentPage === i + 1
+                        ? "bg-blue-600 text-white"
+                        : "border-gray-300 text-gray-700"
+                      } hover:bg-white transition`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => getAllInstructors(currentPage + 1)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-white transition"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
           </div>
-
-
         </div>
       </div>
     </div>
