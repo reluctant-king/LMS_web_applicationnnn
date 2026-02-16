@@ -107,16 +107,67 @@ const getStudents = async (page = 1) => {
       }
     );
 
-    const list = res.data.data || res.data.students || [];
+    // Backend currently returns: { success, students }
+    const rawList = res.data.data || res.data.students || [];
 
-    setStudents(list);
-    setCurrentPage(res.data.page || page);
-    setTotalPages(res.data.totalPages || 1);
-    setTotalItems(
-      typeof res.data.totalItems === "number"
-        ? res.data.totalItems
-        : list.length
-    );
+    // Detect if backend already does pagination (future-proof)
+    const hasServerPagination =
+      res.data.page !== undefined ||
+      res.data.totalPages !== undefined ||
+      res.data.totalItems !== undefined;
+
+    if (hasServerPagination) {
+      // ✅ Use server pagination if it exists
+      const list = rawList;
+
+      const totalItems =
+        typeof res.data.totalItems === "number"
+          ? res.data.totalItems
+          : list.length;
+
+      const totalPages =
+        typeof res.data.totalPages === "number"
+          ? res.data.totalPages
+          : Math.max(1, Math.ceil(totalItems / itemsPerPage));
+
+      setStudents(list);
+      setCurrentPage(res.data.page || page);
+      setTotalItems(totalItems);
+      setTotalPages(totalPages);
+    } else {
+      // ✅ Fallback: client-side search + pagination on full list
+
+      // 1) Filter by search
+      const searchLower = search.toLowerCase();
+      const filtered = searchLower
+        ? rawList.filter((s) => {
+            const combined = `${s.name || ""} ${s.email || ""} ${
+              s.courseEnrolled || ""
+            }`.toLowerCase();
+            return combined.includes(searchLower);
+          })
+        : rawList;
+
+      // 2) Compute totals
+      const totalItems = filtered.length;
+      const totalPages = Math.max(
+        1,
+        Math.ceil(totalItems / itemsPerPage)
+      );
+
+      // 3) Slice for current page
+      const startIndex = (page - 1) * itemsPerPage;
+      const paginated = filtered.slice(
+        startIndex,
+        startIndex + itemsPerPage
+      );
+
+      // 4) Set state
+      setStudents(paginated);
+      setCurrentPage(page);
+      setTotalItems(totalItems);
+      setTotalPages(totalPages);
+    }
   } catch (err) {
     console.error("Error fetching students:", err);
   } finally {
